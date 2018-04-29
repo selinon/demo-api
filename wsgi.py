@@ -10,18 +10,18 @@ import connexion
 from flask import redirect
 from selinon_api import defaults
 
-app = connexion.App(__name__)
-app.add_api(defaults.SWAGGER_YAML_PATH)
+application = connexion.App(__name__)
+application.add_api(defaults.SWAGGER_YAML_PATH)
 
 
-@app.route('/')
+@application.route('/')
 def base_url():
     # Be nice with user access
     return redirect('api/v1/ui')
 
 
 if __name__ == '__main__':
-    app.run(
+    appapplication.run(
         port=int(os.environ.get('SERVICE_PORT', defaults.DEFAULT_SERVICE_PORT)),
         server='flask',
         debug=True
