@@ -20,7 +20,7 @@ objects:
   metadata:
     name: api
     labels:
-      app: selinon-demo
+      app: selinon
   spec:
     output:
       to:
