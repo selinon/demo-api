@@ -6,7 +6,7 @@
 # ######################################################################
 
 from selinon import run_flow
-from myapp.configuration import init
+from .configuration import init
 
 
 class Connection(object):
