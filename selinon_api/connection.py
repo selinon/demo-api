@@ -6,7 +6,6 @@
 # ######################################################################
 
 from selinon import run_flow
-from .configuration import init
 
 
 class Connection(object):
@@ -24,6 +23,8 @@ class Connection(object):
         :param node_args: flow arguments
         :return: celery.AsyncResult describing dispatcher task
         """
+        # TODO: fix
+        from .configuration import init
         if not cls._connected:
             # It is not necessary to connect to result backend, we just publish messages
             init(with_result_backend=False)
