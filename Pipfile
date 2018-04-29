@@ -10,6 +10,7 @@ name = "pypi"
 flask = "*"
 gunicorn = "*"
 connexion = "*"
+selinon = {extras = ["redis", "celery", "mongodb", "postgresql"]}
 
 
 [dev-packages]
