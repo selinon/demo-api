@@ -8,6 +8,7 @@ flask = "*"
 gunicorn = "*"
 connexion = "*"
 selinon = {extras = ["celery", "mongodb", "redis", "postgresql"], version = "==1.0.0rc4"}
+demo_worker = {git = "https://github.com/selinon/demo-worker"}
 
 [dev-packages]
 

@@ -23,9 +23,8 @@ class Connection(object):
         :param node_args: flow arguments
         :return: celery.AsyncResult describing dispatcher task
         """
-        # TODO: fix
-        from .configuration import init
         if not cls._connected:
+            from demo_worker import init
             # It is not necessary to connect to result backend, we just publish messages
             init(with_result_backend=False)
             cls._connected = True
