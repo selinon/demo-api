@@ -21,7 +21,7 @@ def post_run_flow(flow_name, node_args=None):
     """
     logger.info("Scheduling flow '%s' with node_args: '%s'", flow_name, node_args)
     dispatcher = Connection.run_selinon_flow(flow_name, node_args)
-    return {"dispatcher_id": dispatcher.id, "flow_name": flow_name}, 201
+    return {"dispatcher_id": dispatcher.id, "flow_name": flow_name, "node_args": node_args}, 201
 
 
 def get_flows():
