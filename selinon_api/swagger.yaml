@@ -13,13 +13,22 @@ paths:
     post:
       tags: [Flow]
       operationId: selinon_api.api_v1.post_run_flow
-      summary: Run a flow
+      summary: Run a flow.
       parameters:
         - $ref: "#/parameters/flow_name"
         - $ref: "#/parameters/node_args"
       responses:
         201:
-          description: Flow was scheduled
+          description: The given flow was scheduled.
+
+  /flows:
+    get:
+      tags: [Flow]
+      operationId: selinon_api.api_v1.get_flows
+      summary: Get available flows.
+      responses:
+        200:
+          description: Listing of available flows.
 
 parameters:
   flow_name:
