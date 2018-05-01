@@ -30,6 +30,44 @@ paths:
         200:
           description: Listing of available flows.
 
+  /travis/{organization}/logs:
+    post:
+      tags: [Travis CI]
+      operationId: selinon_api.api_v1.post_travis_org_logs
+      summary: Gather logs for active repos in Travis CI for the given organization.
+      parameters:
+        - name: organization
+          in: path
+          format: path
+          required: true
+          description: Organization name for which logs should be gathered.
+          type: string
+      responses:
+        201:
+          description: The given logs gathering for active repos was scheduled.
+
+  /travis/{organization}/{repo}/logs:
+    post:
+      tags: [Travis CI]
+      operationId: selinon_api.api_v1.post_travis_repo_logs
+      summary: Gather logs for active repos in Travis CI for the given repository.
+      parameters:
+        - name: organization
+          in: path
+          format: path
+          required: true
+          description: Organization name for which logs should be gathered.
+          type: string
+        - name: repo
+          in: path
+          format: path
+          required: true
+          description: Repository for which logs should be gathered.
+          type: string
+      responses:
+        201:
+          description: The given logs gathering for the given repo was scheduled.
+
 parameters:
   flow_name:
     name: flow_name
