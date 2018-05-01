@@ -43,4 +43,5 @@ def post_travis_org_logs(organization):
 
 def post_travis_repo_logs(organization, repo):
     """Gather logs for a project given by organization/repo."""
+    print("********************************************************************************")
     return post_run_flow('travis_repo_logs', {'organization': organization, 'repo': repo})

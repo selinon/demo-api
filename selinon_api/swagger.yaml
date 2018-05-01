@@ -38,7 +38,6 @@ paths:
       parameters:
         - name: organization
           in: path
-          format: path
           required: true
           description: Organization name for which logs should be gathered.
           type: string
@@ -54,13 +53,11 @@ paths:
       parameters:
         - name: organization
           in: path
-          format: path
           required: true
           description: Organization name for which logs should be gathered.
           type: string
         - name: repo
           in: path
-          format: path
           required: true
           description: Repository for which logs should be gathered.
           type: string
