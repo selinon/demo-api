@@ -1,0 +1,72 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    service: api
+    app: selinon
+    component: api
+  name: api
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    service: api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: api
+    app: selinon
+    component: api
+  name: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: api
+  template:
+    metadata:
+      labels:
+        service: api
+    spec:
+      containers:
+      - env:
+        - name: BROKER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: selinon
+              key: broker-url
+        name: api
+        image: fridex/selinon-api:latest
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "125m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: '/'
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 10
+        livenessProbe:
+          # TODO: create liveness
+          httpGet:
+            path: '/'
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 60
+          timeoutSeconds: 10
+

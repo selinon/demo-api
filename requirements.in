@@ -1,0 +1,7 @@
+flask
+gunicorn
+connexion[swagger-ui]
+# demo-worker requirements
+git+https://github.com/selinon/demo-worker
+requests
+selinon[celery,mongodb,postgresql,redis,s3,sentry]
